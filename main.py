@@ -203,10 +203,6 @@ def all_lasttime_differences(data):
             min_id = order
     return f'The average time difference for all orders is {round(total_time / len(data), 2)}.\nThe order with the largest time difference is {max_id} with {max_time} seconds, and the order with the lowest time difference is {min_id} with {min_time} seconds'
 
-# print(all_lasttime_differences(orders_by_size))
-# Check False Positives
-# Regression - y(ai misses)
-
 # Helper function - find the 3 biggest orders
 def find_biggest_orders():
     orders = data['order_id']
