@@ -39,8 +39,6 @@ def all_average_difference(data,coordiante):
             min_id = order
     return f'The average distance for the {coordiante} axis is {round(total_distance/len(lst),2)}.\nThe order with the biggest difference is {max_id} with {max_time} differnce, and the order with the smallest difference is {min_id} with {min_time} difference'
 
-# print(all_average_difference(orders_by_size,'x'))
-
 def ai_detection_accuracy(order_id):
     '''
     checks the amount of times the AI worked with a specific order id
@@ -74,8 +72,6 @@ def all_detection_accuracy(data):
             min_acc = round(accuracy, 2)
             min_id = order
     return f'The average accuracy for all orders is {round(total_accuracy/len(data),2)}.\nThe order with the highest accuracy is {max_id} with {max_acc}%, and the order with the lowest accuracy is {min_id} with {min_acc}%'
-
-# print(all_detection_accuracy(orders_by_size))
 
 def check_camera_accuracy(cam_id):
     '''
@@ -117,7 +113,7 @@ def camera_accuracy():
             worstscore = score
             worstcam = camera
     return f"The average score for all cameras is {round(total_score/instance,2)}.\nThe best camera is {bestcam} with a score of {bestscore}, and the worst camera is {worstcam} with a score of {worstscore}"
-# print(camera_accuracy())
+
 
 # Check number of misses (no. of agent tagged stalls vs ai tagged stalls)
 def check_camera_misses(order_id):
@@ -174,7 +170,6 @@ def stall_time_diff():
                 instances += 1
     return f"The average time difference is {round(total_difference/instances,2)} seconds.\nThe maximum difference is {max_diff} seconds, and the min difference is {min_diff} seconds"
 
-# print(stall_time_diff())
 
 # Agent last time vs ai last time
 def agent_vs_ai_lasttime(order_id):
@@ -225,17 +220,6 @@ def find_biggest_orders():
     top_orders = sorted(d.items(), key=lambda x: x[1], reverse=True)[:3]
     return top_orders
 
-# orders, sorted by size:
-
-# Filter for the top 3 orders
-# top_orders = [order[0] for order in orders_by_size]
-# print(top_orders)
-# for order in orders_by_size:
-#     print(agent_vs_ai_lasttime(order))
-first_order = data.loc[data['order_id']==orders_by_size[0],['ai_tracker_last_bbox','agent_last_bbox']]
-# second_order = data.loc[data['order_id']==top_orders[1],['ai_tracker_last_bbox','agent_last_bbox']]
-# third_order = data.loc[data['order_id']==top_orders[2],['ai_tracker_last_bbox','agent_last_bbox']]
-
 def find_xandy_points(order_df):
     ai_coords = []
     agent_coords = []
@@ -246,9 +230,4 @@ def find_xandy_points(order_df):
         agent_coords.append((agent_line['x'],agent_line['y']))
 
     return(ai_coords,agent_coords)
-print(find_xandy_points(first_order)[1])
-# first_order_xy = sorted(find_xandy_points(first_order))
-# second_order_xy = sorted(find_xandy_points(second_order))
-# third_order_xy = sorted(find_xandy_points(third_order))
-
 
